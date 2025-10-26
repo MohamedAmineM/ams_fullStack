@@ -5,9 +5,9 @@ version: '3.3'
 services:
   # Backend service
   ams_rest:
-    image: dockerhubsip/ams_back
+    image: aminesip/amsBack
     ports:
-      - "8085:8080" 
+      - "8085:8081" 
     container_name: ams_back_cont
     restart: always
     depends_on:
@@ -23,7 +23,7 @@ services:
 
   # Frontend Service 
   ams_front:
-    image: dockerhubsip/ams_front
+    image: aminesip/amsFront
     container_name: ams_front_cont
     ports:
       - "8070:80" 
