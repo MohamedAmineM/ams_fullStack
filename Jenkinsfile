@@ -15,7 +15,7 @@ pipeline {
                 script {
                     echo "====++++executing build and push back image++++===="
                     withCredentials([usernamePassword(credentialsId: 'dockerhub_aminesip', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                        sh "docker build -t $USER/${springF}/"
+                        sh "docker build -t $USER/${springF} ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh "docker push $USER/${springF}"
                     }
@@ -40,7 +40,7 @@ pipeline {
                 script {
                     echo "====++++executing build and push front image++++===="
                     withCredentials([usernamePassword(credentialsId: 'fullstack_dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                        sh "docker build -t $USER/${angularF}/"
+                        sh "docker build -t $USER/${angularF} ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh "docker push $USER/${angularF}"
                     }
