@@ -1,8 +1,8 @@
 pipeline {
 
     environment {
-        springF="amsBack"   
-        angularF="amsFront"    
+        springF="amsback"   
+        angularF="amsfront"    
     }
 
     agent any
