@@ -5,7 +5,7 @@ version: '3.3'
 services:
   # Backend service
   ams_rest:
-    image: aminesip/ams_back2025
+    image: mmnassri/ams_back2025
     ports:
       - "8085:8081" 
     container_name: ams_back_cont
@@ -23,7 +23,7 @@ services:
 
   # Frontend Service 
   ams_front:
-    image: aminesip/ams_front2025
+    image: mmnassri/ams_front2025
     container_name: ams_front_cont
     ports:
       - "8070:80" 
