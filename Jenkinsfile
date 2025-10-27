@@ -15,15 +15,15 @@ pipeline {
                 script {
                     echo "====++++executing build and push back image++++===="
                     withCredentials([usernamePassword(credentialsId: 'mmnassri', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                        sh "docker build -t $USER/ams_back2025 ${springF}/"
-                        sh "echo $PASS | docker login -u $USER --password-stdin"
-                        sh "docker push $USER/ams_back2025"
+                        bat "docker build -t $USER/ams_back2025 ${springF}/"
+                        bat "echo $PASS | docker login -u $USER --password-stdin"
+                        bat "docker push $USER/ams_back2025"
                     }
                 }
             }
             post {
                 always {
-                    sh "docker logout"
+                    bat "docker logout"
                 }
                 success {
                     echo "====++++push back image execution success++++===="
@@ -40,15 +40,15 @@ pipeline {
                 script {
                     echo "====++++executing build and push front image++++===="
                     withCredentials([usernamePassword(credentialsId: 'mmnassri', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                        sh "docker build -t $USER/ams_front2025 ${angularF}/"
-                        sh "echo $PASS | docker login -u $USER --password-stdin"
-                        sh "docker push $USER/ams_front2025"
+                        bat "docker build -t $USER/ams_front2025 ${angularF}/"
+                        bat "echo $PASS | docker login -u $USER --password-stdin"
+                        bat "docker push $USER/ams_front2025"
                     }
                 }
             }
             post {
                 always {
-                    sh "docker logout"
+                    bat "docker logout"
                 }
                 success {
                     echo "====++++push front image execution success++++===="
@@ -62,7 +62,7 @@ pipeline {
         // Exécution de docker-compose
         stage('run docker-compose') {
             steps {
-                sh 'docker compose -f docker-compose.yml up -d'
+                bat 'docker compose -f docker-compose.yml up -d'
             }
             post {
                 success {
